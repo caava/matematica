@@ -1,16 +1,15 @@
-N = 1
-contador = 1
-
 lista = []
 testes = []
 
-while N != 0:
-    N = int(input("Número de participantes da festa: ")) # Declaração da variável número de participantes
-    ingresso = input("Informe a ordem de entrada: ")
-    lista = ingresso.split()
-    if contador == N:
-        for i in range(lista):
-            if (i+1) == lista[i]:
-                testes.append([f'Teste [{contador}]', {i + 1 }])
+while True: # laço de repetição para uma quantidade indeterminada de testes
+    N = int(input("Número de participantes da festa: ")) # declaração da variável número de participantes
+    if N == 0: # caso a variável N for zero, o código para
+        break
+    ingresso = input("Informe a ordem de entrada: ") # declaração da ordem de entrada
+    lista = ingresso.split() # manipulação da string ordem de entrada em uma lista com itens
+    for i in range(len(lista)): # verificação do ganhador
+        if int(lista[i]) == i+1:
+            testes.append(lista[i]) # armazenamento do numero do bilhete ganhador
 
-    contador+=1
+for i in range(len(testes)): # impressão dos testes informados
+    print(f'Teste {i+1} \n{testes[i]}\n')
